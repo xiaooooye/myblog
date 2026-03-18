@@ -1,53 +1,63 @@
 # Personal Blog Workspace
 
-一个基于 `Vite + Vue 3 + Tailwind CSS + NestJS` 的个人博客起步项目。
+基于 `Vite + Vue 3 + Tailwind CSS + NestJS` 的个人技术博客项目。
+
+## 线上地址
+
+- 博客首页: `http://141.11.87.249`
+- 博客接口: `http://141.11.87.249/api`
 
 ## 项目结构
 
-- `apps/web`: 前端博客首页与展示层
-- `apps/api`: 后端 API，提供博客内容与作者信息
+- `apps/web`: 前端博客页面与展示层
+- `apps/api`: 后端 API，提供博客内容和作者信息
+- `content/posts`: Markdown 文章内容
 
-## 快速开始
+## 本地开发
 
-1. 安装依赖
+安装依赖：
 
 ```bash
 npm install
 ```
 
-2. 启动后端
+启动后端：
 
 ```bash
 npm run dev:api
 ```
 
-3. 启动前端
+启动前端：
 
 ```bash
 npm run dev:web
 ```
 
-默认情况下：
+默认本地地址：
 
 - 前端: `http://localhost:5173`
 - 后端: `http://localhost:3000/api`
 
-如果你想把前端请求改到别的地址，可以在 `apps/web` 下新增 `.env.local`：
+如果你需要显式指定前端请求地址，可以在 `apps/web/.env.local` 中配置：
 
 ```bash
 VITE_API_BASE_URL=http://localhost:3000/api
 ```
 
-## 写文章（Markdown）
+## 文章写法
 
-文章目录：`content/posts/*.md`
+文章目录：
 
-每篇文章 frontmatter 示例：
+```text
+content/posts/*.md
+```
+
+Frontmatter 示例：
 
 ```md
 ---
 id: 6
-title: 第 6 周学习记录：标题
+title: 第 6 周学习记录：文章标题
 excerpt: 这篇文章的摘要
 category: 前端
 tags: Vue3, 路由, 工程化
@@ -55,10 +65,17 @@ coverImage: /covers/cover-1.svg
 readTime: 6 分钟
 publishedAt: 2026-03-20
 ---
-正文内容...
+
+## 背景
+
+这里写文章正文。
 ```
 
-后端会校验上述字段是否完整，并按 `publishedAt` 倒序输出。
+要求：
+
+- `id` 必须唯一
+- `publishedAt` 格式必须为 `YYYY-MM-DD`
+- `tags` 使用英文逗号分隔
 
 ## 已提供接口
 
@@ -70,16 +87,15 @@ publishedAt: 2026-03-20
 - `GET /api/blog/rss.xml`
 - `GET /api/blog/sitemap.xml`
 
-## 站点地址配置
+## Three.js 展示
 
-生成 RSS 和 sitemap 时使用 `BLOG_SITE_URL`（默认 `http://localhost:5173`）。
-在生产环境请设置为你的正式域名。
+首页已接入 Three.js 视觉组件：
 
-## Three.js 角色展示
+- 右下角角色展示组件
+- 左右两侧氛围动效组件
 
-首页已接入 Three.js 场景组件：
+如果需要替换模型，可修改：
 
-- 默认显示内置“Steve 风格”低多边形人物
-- 若存在模型文件 `apps/web/public/models/source/steve.fbx`，会自动优先加载该模型（纹理目录为 `apps/web/public/models/textures`）
-
-你也可以替换为自己的 `.glb`，并在 `ThreeHero.vue` 中修改加载路径。
+- `apps/web/public/models/source/`
+- `apps/web/public/models/textures/`
+- `apps/web/src/components/ThreeHero.vue`
