@@ -48,7 +48,7 @@ export class BlogService {
     name: 'xiaoyee',
     role: '全栈学习者',
     tagline: '持续记录学习路径、实践过程和每周复盘。',
-    location: '上海',
+    location: '广州',
     focus: ['Vue 3', 'NestJS', 'Tailwind CSS'],
     stats: [
       { label: '文章总数', value: '24' },
