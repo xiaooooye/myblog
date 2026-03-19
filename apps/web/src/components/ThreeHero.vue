@@ -218,8 +218,8 @@ function createFallbackSteve() {
 </script>
 
 <template>
-  <div class="fixed bottom-5 right-5 z-20 hidden md:block">
-    <div class="relative h-[240px] w-[220px] overflow-hidden rounded-2xl border border-black/10 bg-[radial-gradient(circle_at_30%_20%,#f7f2e7,#e8dfd1)] shadow-soft">
+  <div class="fixed bottom-3 right-3 z-20 block md:bottom-5 md:right-5">
+    <div class="relative h-[170px] w-[150px] overflow-hidden rounded-2xl border border-black/10 bg-[radial-gradient(circle_at_30%_20%,#f7f2e7,#e8dfd1)] shadow-soft md:h-[240px] md:w-[220px]">
       <div ref="mountRef" class="h-full w-full"></div>
       <div class="pointer-events-none absolute right-2 top-2 rounded-full bg-black/55 px-2 py-1 text-[10px] text-white/90">
         {{ loadingText }}
